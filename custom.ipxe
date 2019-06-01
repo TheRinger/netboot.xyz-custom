@@ -1,12 +1,82 @@
 #!ipxe
 ###
-### netboot.xyz-custom menu
+### netboot.xyz-custom menu example
 ###
 
-:start
-echo Hello world!
-sleep 10
+:custom
+clear custom_choice
+menu This is a Test Menu
+item --gap This is the first sub menu
+item option_one ${space} Loading a kernel and initrd
+item option_blackarch ${space} Loading an blackarch ISO
+#item --gap This is a second sub menu
+item option_three ${space} Loads another custom sub menu
+item option_four ${space} This is option four
+item option_opensuse ${space] OpenSuse Tumbleweed
+item option_blackarch ${space} Blackarch 64bit
+item option_ubuntu19_desktop ${space} Ubuntu 19.04 Desktop
+item option_ubuntu19_server ${space} Ubuntu 19.04 Server
+item option_slackware ${space} Slackware
+item option_manjaro ${space} Manjaro
+item option_slackware ${space} clonezilla
+item option_slackware ${space} netboot
+choose custom_choice || goto custom_exit
+echo ${cls}
+goto ${custom_choice}
 goto custom_exit
 
+:option_one
+kernel http://path.to/vmlinuz
+initrd http://path.to/initrd
+imgargs vmlinuz put_kernel_img_args_here
+boot || goto custom_exit
+
+:option_blackarch
+kernel https://boot.netboot.xyz/memdisk raw iso
+initrd https://www.blackarch.org/blackarch/iso/blackarch-linux-netinst-2019.06.01-x86_64.iso
+boot || goto custom_exit
+
+:option_opensuse
+kernel https://boot.netboot.xyz/memdisk raw iso
+initrd https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-NET-x86_64-Current.iso
+boot || goto custom_exit
+
+:option_ubuntu19_desktop
+kernel https://boot.netboot.xyz/memdisk raw iso
+initrd http://releases.ubuntu.com/19.04/ubuntu-19.04-desktop-amd64.iso
+boot || goto custom_exit
+
+:option_ubuntu19_server
+kernel https://boot.netboot.xyz/memdisk raw iso
+initrd http://releases.ubuntu.com/19.04/ubuntu-19.04-live-server-amd64.iso
+boot || goto custom_exit
+
+:option_slackware
+kernel https://boot.netboot.xyz/memdisk raw iso
+initrd https://mirrors.slackware.com/slackware/slackware-iso/slackware64-14.2-iso/slackware64-14.2-install-dvd.iso
+boot || goto custom_exit
+
+
+:option_manjaro
+kernel https://boot.netboot.xyz/memdisk raw iso
+initrd https://osdn.net/projects/manjaro/storage/gnome/18.1.0-pre4/manjaro-gnome-18.1.0-pre4-testing-x86_64.iso
+boot || goto custom_exit
+
+:option_clonezilla
+kernel https://boot.netboot.xyz/memdisk raw iso
+initrd https://osdn.mirror.constant.com//clonezilla/71155/clonezilla-live-2.6.2-5-amd64.iso boot=live username=user union=overlay config components quiet noswap edd=on nomodeset nodmraid locales= keyboard-layouts= ocs_live_run="ocs-live-general" ocs_live_extra_param="" ocs_live_batch=no net.ifnames=0 nosplash noprompt
+
+:option_netboot
+kernel https://boot.netboot.xyz/memdisk raw iso
+initrd https://boot.netboot.xyz/ipxe/netboot.xyz-efi.iso
+boot || goto custom_exit
+
+
+
+:option_three
+echo Chains into another menu...
+chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/custom1.ipxe || goto custom
+
 :custom_exit
-exit 0
+chain utils.ipxe
+exit
