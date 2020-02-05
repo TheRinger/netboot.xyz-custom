@@ -17,6 +17,7 @@ item option_blackarch ${space} Blackarch 64bit
 item option_ubuntu19_desktop ${space} Ubuntu 19.04 Desktop
 item option_ubuntu19_server ${space} Ubuntu 19.04 Server
 item option_slackware ${space} Slackware
+item option_slackwareL ${space} Slackware_Local
 item option_manjaro ${space} Manjaro
 item option_slackware ${space} clonezilla
 item option_slackware ${space} netboot
@@ -56,6 +57,10 @@ kernel https://boot.netboot.xyz/memdisk raw iso
 initrd https://mirrors.slackware.com/slackware/slackware-iso/slackware64-14.2-iso/slackware64-14.2-install-dvd.iso
 boot || goto custom_exit
 
+:option_slackwareL
+kernel https://boot.netboot.xyz/memdisk raw iso
+initrd http://10.0.0.33/slackware/slackware64-current-iso/slackware64-current-mini-install-latest.iso
+boot || goto custom_exit
 
 :option_manjaro
 kernel https://boot.netboot.xyz/memdisk raw iso
