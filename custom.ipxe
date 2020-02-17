@@ -31,7 +31,7 @@ goto custom_exit
 :option_one
 kernel http://10.0.0.33/install_slack/kernels/huge.s/bzImage
 initrd http://10.0.0.33/install_slack/initrd.img
-imgargs vmlinuz ro toram
+imgargs load_ramdisk=1 prompt_ramdisk=0 rw printk.time=0 nfs root=10.0.0.33:/mnt/livemedia luksvol= nop hostname=@LIVEMAIN@ tz=PST locale=en_US.UTF-8 kbd=us
 boot || goto custom_exit
 
 :option_blackarch
