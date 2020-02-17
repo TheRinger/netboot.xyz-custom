@@ -20,17 +20,18 @@ item option_slackware ${space} Slackware
 item option_slackwareL ${space} Slackware_Local
 item option_slackwareplasma5 ${space} Slackwareplasma5
 item option_slackwaretry ${space} slackwaretry
-item option_slackware ${space} clonezilla
-item option_slackware ${space} netboot
+item option_slax ${space} slax
+item option_clonezilla ${space} clonezilla
+item option_netboot ${space} netboot
 choose custom_choice || goto custom_exit
 echo ${cls}
 goto ${custom_choice}
 goto custom_exit
 
 :option_one
-kernel http://path.to/vmlinuz
-initrd http://path.to/initrd
-imgargs vmlinuz put_kernel_img_args_here
+kernel http://10.0.0.33/mirrors/slackware/slackware64-current/kernels/huge.s/bzImage
+initrd http://10.0.0.33/iso_zfs_/iso/k/initrd.img
+imgargs vmlinuz 
 boot || goto custom_exit
 
 :option_blackarch
@@ -68,14 +69,9 @@ kernel https://boot.netboot.xyz/memdisk raw iso
 initrd http://10.0.0.33/mirrors/iso/slackware64-live-plasma5-current.iso 
 boot || goto custom_exit
 
-:option_slackwaretry
-kernel http://10.0.0.33/mirrors/slackware/slackware64-current/kernels/huge.s/bzImage
-initrd http://10.0.0.33/mirrors/slackware/slackware64-current/isolinux/initrd.img
-boot || goto custom_exit
-
-:option_manjaro
+:option_slax
 kernel https://boot.netboot.xyz/memdisk raw iso
-initrd https://osdn.net/projects/manjaro/storage/gnome/18.1.0-pre4/manjaro-gnome-18.1.0-pre4-testing-x86_64.iso
+initrd http://ftp.sh.cvut.cz/slax/Slax-9.x/slax-ipxe.iso
 boot || goto custom_exit
 
 :option_clonezilla
