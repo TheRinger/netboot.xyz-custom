@@ -12,7 +12,7 @@ item option_blackarch ${space} Loading an blackarch ISO
 #item --gap This is a second sub menu
 item option_three ${space} Loads another custom sub menu
 item option_four ${space} This is option four
-item option_opensuse ${space] OpenSuse Tumbleweed
+item option_opensuse ${space} OpenSuse Tumbleweed
 item option_blackarch ${space} Blackarch 64bit
 item option_ubuntu19_desktop ${space} Ubuntu 19.04 Desktop
 item option_ubuntu19_server ${space} Ubuntu 19.04 Server
