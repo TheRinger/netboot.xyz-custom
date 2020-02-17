@@ -59,7 +59,17 @@ boot || goto custom_exit
 
 :option_slackwareL
 kernel https://boot.netboot.xyz/memdisk raw iso
-initrd http://10.0.0.33/slackware/slackware64-current-iso/slackware64-current-mini-install-latest.iso
+initrd http://10.0.0.33/mirrors/iso/slackware64-live-current.iso 
+boot || goto custom_exit
+
+:option_slackwareplasma5
+kernel https://boot.netboot.xyz/memdisk raw iso
+initrd http://10.0.0.33/mirrors/iso/slackware64-live-plasma5-current.iso 
+boot || goto custom_exit
+
+:option_slackwaretry
+kernel http://10.0.0.33/mirrors/slackware/slackware64-current/kernels/huge.s/bzImage
+initrd http://10.0.0.33/mirrors/slackware/slackware64-current/isolinux/initrd.img
 boot || goto custom_exit
 
 :option_manjaro
