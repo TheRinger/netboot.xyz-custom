@@ -29,9 +29,9 @@ goto ${custom_choice}
 goto custom_exit
 
 :option_one
-kernel http://10.0.0.33/mirrors/slackware/slackware64-current/kernels/huge.s/bzImage
-initrd http://10.0.0.33/iso_zfs_/iso/k/initrd.img
-imgargs vmlinuz 
+kernel http://10.0.0.33/install_slack/kernels/huge.s/bzImage
+initrd http://10.0.0.33/install_slack/initrd.img
+imgargs vmlinuz ro toram
 boot || goto custom_exit
 
 :option_blackarch
