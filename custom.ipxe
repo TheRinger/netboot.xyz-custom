@@ -34,8 +34,9 @@ initrd http://10.0.0.33/install_slack/initrd.img load_ramdisk=1 prompt_ramdisk=0
 boot || goto custom_exit
 
 :option_blackarch
-kernel https://boot.netboot.xyz/memdisk raw iso
-initrd https://www.blackarch.org/blackarch/iso/blackarch-linux-netinst-2019.06.01-x86_64.iso
+kernel http://10.0.0.33/install_slack/kernels/huge.s/bzImage
+initrd http://10.0.0.33/install_slack/initrd.img
+append initrd=initrd.img load_ramdisk=1 prompt_ramdisk=0 rw printk.time=0 nomodeset SLACK_KERNEL=huge.s
 boot || goto custom_exit
 
 :option_opensuse
