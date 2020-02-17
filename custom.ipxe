@@ -18,7 +18,8 @@ item option_ubuntu19_desktop ${space} Ubuntu 19.04 Desktop
 item option_ubuntu19_server ${space} Ubuntu 19.04 Server
 item option_slackware ${space} Slackware
 item option_slackwareL ${space} Slackware_Local
-item option_manjaro ${space} Manjaro
+item option_slackwareplasma5 ${space} Slackwareplasma5
+item option_slackwaretry ${space} slackwaretry
 item option_slackware ${space} clonezilla
 item option_slackware ${space} netboot
 choose custom_choice || goto custom_exit
